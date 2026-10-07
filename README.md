@@ -1,243 +1,128 @@
-# Awesome-Managed-Windows-File-Storage-SMB
-
-## Top Managed Windows File Storage (SMB) Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on SMB File Shares, Self-Hosted NAS & Open-Source File Servers*  
-
-**Last updated: October 2026**
-
-
-
-This repository tracks notable **commercial managed Windows file storage services** and **open-source projects** that provide SMB/CIFS file shares for Windows and mixed-OS environments — from cloud-managed file servers to self-hosted NAS distributions and lightweight SMB server implementations.
-
-
-
-**Examples** include Amazon FSx for Windows File Server, Azure Files SMB, NetApp Cloud Volumes SMB, Nasuni, Panzura Freedom, CTERA Enterprise File Services, Qumulo, SoftNAS, Egnyte, and Morpheus Data Storage (the category leaders).
-
-
-
-**Open-source emphasis**: Windows file storage is anchored by **Samba** as the de facto open-source SMB/CIFS implementation, with **XigmaNAS** and **KSMBD** providing alternative NAS and kernel-space SMB servers. **WinFsp** enables custom file system development on Windows, while **pysmbserver** and **DittoFS** offer lightweight SMB server implementations for testing and development. **GlusterFS** and **Ceph** provide distributed file storage with SMB access via Samba VFS modules. This section is heavily expanded.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[Amazon FSx for Windows File Server](https://aws.amazon.com/fsx/windows/)**  
-
-  **AWS's fully managed Windows file server** — native SMB protocol, Active Directory integration, and SSD storage . **Supports SMB 3.1.1 with encryption and multichannel** . **Scales to petabytes with automatic failover in Multi-AZ deployments** . **Best for AWS-native Windows workloads** .
-
-
-
-- **[Azure Files SMB](https://azure.microsoft.com/en-us/products/storage/files/)**  
-
-  **Microsoft's managed SMB file shares** — fully managed file shares accessible via SMB 3.0 . **Native integration with Windows and Active Directory** . **Best for Azure-native file storage** .
-
-
-
-- **[NetApp Cloud Volumes SMB](https://www.netapp.com/)**  
-
-  **Managed SMB file services on major clouds** — NetApp ONTAP-based with enterprise data management . **Best for NetApp ecosystem users** .
-
-
-
-- **[Nasuni File Data Platform](https://www.nasuni.com/)**  
-
-  **Cloud-native file services with local caching** — SMB access with global namespace . **Best for distributed enterprise file services** .
-
-
-
-- **[Panzura Freedom](https://panzura.com/)**  
-
-  **Hybrid cloud file services** — SMB access with global file locking and caching . **Best for multi-site collaboration** .
-
-
-
-- **[CTERA Enterprise File Services](https://www.ctera.com/)**  
-
-  **Global file system with SMB access** — WAN optimization and global deduplication . **Best for distributed enterprise file services** .
-
-
-
-- **[Qumulo File Fabric](https://qumulo.com/)**  
-
-  **Scale-out file storage with SMB support** — high-performance for media and life sciences . **Best for high-throughput workloads** .
-
-
-
-- **[SoftNAS Cloud SMB](https://www.softnas.com/)**  
-
-  **Cloud NAS with SMB support** — virtual NAS appliance for AWS, Azure, and VMware . **Best for cloud NAS** .
-
-
-
-- **[Egnyte Enterprise File Services](https://www.egnyte.com/)**  
-
-  **Content collaboration with SMB access** — hybrid cloud architecture . **Best for compliance-focused file services** .
-
-
-
-- **[Morpheus Data Storage](https://morpheusdata.com/)**  
-
-  **Hybrid cloud management with storage** — SMB and NFS support . **Best for hybrid cloud** .
-
-
-
-## Open-Source GitHub Projects
-
-
-
-### SMB/CIFS File Servers
-
-
-
-- **[Samba](https://github.com/samba-team/samba)**  
-
-  **The de facto standard for open-source SMB/CIFS file and print services**, GPL-3.0 licensed . **Full SMB/CIFS implementation with Active Directory Domain Controller support** . **Stackable VFS interface** — local filesystems (btrfs, ext4, xfs) and clustered (CephFS, GlusterFS)  . **The foundation for nearly all open-source SMB file servers** . **Best for production SMB file shares** .
-
-
-
-- **[KSMBD](https://github.com/ksmbd/ksmbd)**  
-
-  **Kernel-space SMB server implementation**, GPL-2.0 licensed . **Runs in kernel space for multi-threaded performance** — addresses Samba's single-threaded user-space limitations  . **Provides SMB2/3 protocol support with NTLM authentication** . **Requires ksmbd-tools for user management**  . **Trade-off**: Cannot coexist with Samba on the same system  . **Best for high-performance SMB on Linux** .
-
-
-
-- **[pysmbserver](https://github.com/CobblePot59/pysmbserver)**  
-
-  **Lightweight SMB server implementation in Python**, open-source . **Based on Impacket with offensive capabilities removed**  . **Simple CLI and programmatic API** — custom shares, authentication, IPv6, and experimental SMB2 support  . **No root required for ports > 1024**  . **Best for testing SMB clients and lightweight file sharing** .
-
-
-
-- **[DittoFS](https://github.com/marmos91/dittofs)**  
-
-  **Unified NFS/SMB file server with multi-tenant architecture**, open-source . **SMB2 dialect 0x0202 with NTLM/SPNEGO authentication**  . **Storage backends**: in-memory, BadgerDB, PostgreSQL for metadata; filesystem or S3 for content  . **Multi-tenant with isolated metadata and content stores**  . **Prometheus metrics and OpenTelemetry tracing**  . **Best for multi-tenant cloud storage gateways** .
-
-
-
-- **[go-smb2-alist](https://github.com/KirCute/go-smb2-alist)**  
-
-  **Lightweight SMB2/3 server library in Go**, AGPL/commercial dual license . **Designed for custom file system implementation** — can substitute libfuse  . **macOS Time Machine compatibility with extended attributes and Bonjour advertisement**  . **Best for Go-based SMB server development** .
-
-
-
-### NAS Distributions & File Server Platforms
-
-
-
-- **[XigmaNAS](https://www.xigmanas.com/)**  
-
-  **Open-source NAS distribution with SMB/CIFS support**, BSD license . **Based on FreeBSD with ZFS, software RAID, and disk encryption**  . **Web-based management interface**  . **Supports SMB, Samba AD DC, FTP, NFS, AFP, rsync, iSCSI, and more**  . **The original open-source NAS distribution** — originally FreeNAS, then NAS4Free  . **Best for DIY NAS with Windows file sharing** .
-
-
-
-- **[WinFsp](https://github.com/winfsp/winfsp)**  
-
-  **Windows File System Proxy for custom file systems**, GPL-3.0 with commercial option . **Enables developing custom file systems on Windows** — alternative to CBFS Connect  . **Robust, flexible, and secure platform** for building cloud file services  . **Best for custom Windows file system development** .
-
-
-
-### Distributed File Storage with SMB Access
-
-
-
-- **[GlusterFS](https://github.com/gluster/glusterfs)**  
-
-  **Open-source distributed file system**, GPL-2.0 licensed . **Scales to petabytes and thousands of clients**  . **No-metadata server architecture for performance and linear scalability**  . **SMB access via Samba VFS module**  . **Best for scale-out NAS with SMB** .
-
-
-
-- **[Ceph](https://github.com/ceph/ceph)**  
-
-  **Unified distributed storage system**, LGPL-2.1 licensed . **Object, block, and file storage** — CephFS with POSIX compliance  . **Samba VFS module (vfs_ceph)** provides SMB access to CephFS  . **Best for unified storage with SMB gateway** .
-
-
-
-- **[Samba VFS for Ceph](https://github.com/samba-team/samba)**  
-
-  **VFS module bridging Samba SMB shares to CephFS**, GPL-3.0 licensed . **Two variants**: vfs_ceph (high-level libcephfs) and vfs_ceph_new (low-level APIs with better credential handling)  . **Best for SMB access to Ceph storage** .
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **dperson/samba** — Dockerized Samba with simple configuration  .
-
-- **ServerContainers/samba** — Alpine-based Samba Docker image with zeroconf, wsdd2, and Time Machine support  .
-
-- **FileCloud Server** — Self-hosted enterprise file sharing with SMB network share access  .
-
-- **File Server Management** — Multi-tenant governance-first file manager with SMB/NFS/SFTP/S3 support  .
-
-
-
-**Frameworks for building custom SMB file storage solutions**: Combine **Samba** for production SMB/CIFS file shares with Active Directory integration . Use **KSMBD** for kernel-space performance on Linux . Deploy **XigmaNAS** for a complete NAS distribution with web management . Integrate **DittoFS** for multi-tenant SMB/NFS with S3 backends . Use **GlusterFS** or **Ceph** with Samba VFS modules for distributed SMB storage . Choose **pysmbserver** or **go-smb2-alist** for testing and custom SMB server development . Note that true managed Windows file storage with global namespace, automatic failover, and vendor-supported SLAs (FSx, Azure Files, Nasuni) remains primarily commercial territory; open-source stacks provide strong SMB serving, NAS distributions, and distributed storage foundations that require integration for complete enterprise file services.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- SMB file storage handles sensitive business data. Self-hosted solutions require proper security hardening, access controls, and compliance with data privacy regulations.
-
-- **SMB protocol security matters** — SMB 3.0+ supports encryption and secure dialect negotiation. Older SMB1 is deprecated and should be disabled  .
-
-- **KSMBD and Samba cannot coexist** on the same system — choose one based on performance needs  .
-
-- **License considerations**: Samba uses GPL-3.0, KSMBD uses GPL-2.0, XigmaNAS uses BSD, and GlusterFS uses GPL-2.0. Verify licensing against your use case before committing.
-
-- The open-source ecosystem provides strong SMB serving, NAS distributions, and distributed storage foundations, but **global namespace, automatic failover, and vendor-supported SLAs** remain primarily commercial offerings.
-
-
+# 📁 Awesome Managed Windows File Storage (SMB) 🚀
+
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d535f3a77232008d2eab32735460f37e6d3b45d5/media/badge.svg)](https://github.com/ishandutta2007/Awesome-Awesome-Awesome)
+
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Managed Windows File Storage SMB Banner" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB?style=flat-square&color=gold" alt="Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB?style=flat-square&color=blue" alt="Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC0--1.0-green.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
 ---
 
+## 💡 Overview & SEO Keywords
 
+A curated collection of top-tier **commercial managed Windows file storage SaaS products**, **self-hosted Network Attached Storage (NAS) platforms**, and **open-source SMB/CIFS server implementations**. 
 
-**Made for system administrators, storage engineers, and organizations seeking Windows file storage sovereignty.**
+Whether you need enterprise-grade **SMB 3.1.1 multi-AZ file shares** with native **Active Directory (AD) authentication**, high-performance **kernel SMB servers (KSMBD)**, or distributed cloud file gateways, this repository indexes the best solutions available.
 
-Let's make managed Windows file storage and SMB file sharing more open, transparent, and accessible.
+**Keywords**: Managed Windows File Storage, SMB 3.1.1, CIFS Server, AWS FSx for Windows, Azure Files SMB, Samba VFS, KSMBD, Cloud NAS, Self-Hosted NAS, TrueNAS, OpenMediaVault, WinFsp, Enterprise File Services.
+
+---
+
+## 📑 Table of Contents
+
+- [☁️ SaaS & Hosted Managed Platforms](#️-saas--hosted-managed-platforms)
+- [🐧 Open-Source GitHub Projects](#-open-source-github-projects)
+- [🛠️ Protocol & Implementation Cheat Sheet](#️-protocol--implementation-cheat-sheet)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [⚖️ Disclaimer](#️-disclaimer)
+- [💖 Support](#-support)
+- [📈 Star History](#-star-history)
+
+---
+
+## ☁️ SaaS & Hosted Managed Platforms
+
+> 📊 **Market Insights**: The Global Managed Cloud & Enterprise SMB File Storage sector is estimated at **~$7.8 Billion in 2026** and projected to reach **~$16.2 Billion by 2031** (CAGR ~15.7%). The sector is **moderately concentrated** at the top by cloud hyperscalers (Microsoft Azure & AWS), while remaining **fragmented** across specialized enterprise hybrid-cloud, edge-caching, and scale-out file storage providers.
+
+The table below highlights commercial managed Windows file storage solutions, sorted in **descending order by Company Size (Revenue / Valuation)**.
+
+| SaaS Product | Company Size (Valuation / Rev) | Pricing (Starting Tier) | Free Tier Limit / Free Trial | Primary Use Case & Highlights |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Azure Files SMB](https://azure.microsoft.com/en-us/products/storage/files/)** | ~$3.1 Trillion *(Microsoft, ~$245B Rev)* | **$0.06 / GB-month** *(Standard LRS)* | **5 GB LRS free / mo** *(12 months)* + **$200 credit** *(30 days)* | Native Azure SMB 3.0/3.1.1 shares with Active Directory Domain Services integration. |
+| **[Amazon FSx for Windows File Server](https://aws.amazon.com/fsx/windows/)** | ~$2.3 Trillion *(Amazon, ~$575B Rev)* | **$0.13 / GB-month** *(Single-AZ HDD)* | **500 GB-months Single-AZ HDD free** *(60-day trial)* | Fully managed Windows file server in AWS with native AD integration, Multi-AZ failover, and SMB encryption. |
+| **[NetApp Cloud Volumes SMB](https://www.netapp.com/)** | ~$25 Billion *(NetApp, ~$6.3B Rev)* | **$0.10 / GB-month** or **$0.56 / hr** | **30-day free trial** *(up to 500 GB allocated capacity)* | Enterprise ONTAP-based SMB file shares running natively across AWS, Azure, and Google Cloud. |
+| **[Morpheus Data Storage](https://morpheusdata.com/)** | ~$24 Billion *(HPE Morpheus, ~$29B Rev)* | **$120 / node / month** | **Free Community Edition** *(up to 3 nodes, unlimited time)* | Hybrid cloud storage management with multi-tenant SMB and NFS share provisioners. |
+| **[Qumulo File Fabric](https://qumulo.com/)** | ~$1.2 Billion *(Qumulo, ~$100M ARR)* | **$0.12 / GB-month** | **14-day free trial** *(1 TB test quota on cloud marketplaces)* | High-throughput, scale-out cloud NAS for media, life sciences, and enterprise SMB data. |
+| **[Nasuni File Data Platform](https://www.nasuni.com/)** | ~$1.2 Billion *(Nasuni, ~$120M ARR)* | **$0.08 / GB-month** | **30-day free trial** *(up to 10 TB local edge caching)* | Cloud-native global file system with local edge appliance caching and SMB lock management. |
+| **[Egnyte Enterprise File Services](https://www.egnyte.com/)** | ~$1.0 Billion *(Egnyte, ~$200M ARR)* | **$20 / user / month** | **15-day free trial** *(10 users, 250 GB test storage)* | Hybrid cloud enterprise file sharing with governance, compliance, and local SMB share integration. |
+| **[Panzura Freedom (CloudFS)](https://panzura.com/)** | ~$500 Million *(Panzura, ~$70M ARR)* | **$0.09 / GB-month** | **30-day Proof-of-Concept trial** *(up to 5 TB managed volume)* | Hybrid cloud global file system offering real-time global SMB file locking and caching. |
+| **[CTERA Enterprise File Services](https://www.ctera.com/)** | ~$400 Million *(CTERA, ~$60M ARR)* | **$0.10 / GB-month** | **30-day free trial** *(up to 1 TB cloud gateway license)* | Edge-to-cloud file services platform with WAN optimization and local SMB share access. |
+| **[SoftNAS Cloud SMB](https://www.softnas.com/)** | ~$50 Million *(Buurst SoftNAS, Private)* | **$0.05 / GB-month** + cloud storage | **30-day free trial** *(up to 20 TB storage node limit)* | Virtual NAS appliance deployed on AWS, Azure, or VMware providing high-availability SMB shares. |
+
+---
+
+## 🐧 Open-Source GitHub Projects
+
+Below is a curated list of open-source SMB servers, NAS operating systems, FUSE proxies, and SMB protocol implementations sorted in **descending order by GitHub Star Count**.
+
+| Project & Repo | Star Count | License | Description & Key Features |
+| :--- | :---: | :---: | :--- |
+| **[Ceph](https://github.com/ceph/ceph)** | [![GitHub stars](https://img.shields.io/github/stars/ceph/ceph?style=social&color=white)](https://github.com/ceph/ceph/stargazers) | LGPL-2.1 | Unified distributed object, block, and POSIX file storage platform. Provides SMB access via `vfs_ceph` Samba modules. |
+| **[Impacket](https://github.com/fortra/impacket)** | [![GitHub stars](https://img.shields.io/github/stars/fortra/impacket?style=social&color=white)](https://github.com/fortra/impacket/stargazers) | Apache-2.0 | Python collection of network protocol classes with full programmatic SMB1/2/3 protocol crafting and client/server parsing. |
+| **[WinFsp](https://github.com/winfsp/winfsp)** | [![GitHub stars](https://img.shields.io/github/stars/winfsp/winfsp?style=social&color=white)](https://github.com/winfsp/winfsp/stargazers) | GPL-3.0 | Windows File System Proxy (FUSE for Windows). Enables building custom user-space file systems and SMB-backed drives on Windows. |
+| **[OpenMediaVault](https://github.com/openmediavault/openmediavault)** | [![GitHub stars](https://img.shields.io/github/stars/openmediavault/openmediavault?style=social&color=white)](https://github.com/openmediavault/openmediavault/stargazers) | GPL-3.0 | Debian-based Network Attached Storage (NAS) solution featuring a web management UI, Samba SMB/CIFS, NFS, and plugin architecture. |
+| **[GlusterFS](https://github.com/gluster/glusterfs)** | [![GitHub stars](https://img.shields.io/github/stars/gluster/glusterfs?style=social&color=white)](https://github.com/gluster/glusterfs/stargazers) | GPL-2.0 | Scalable distributed network file system. Supports multi-petabyte scale-out NAS storage with SMB access via Samba VFS. |
+| **[TrueNAS Core / Scale Middleware](https://github.com/truenas/middleware)** | [![GitHub stars](https://img.shields.io/github/stars/truenas/middleware?style=social&color=white)](https://github.com/truenas/middleware/stargazers) | GPL-3.0 | Open-source enterprise storage operating system powered by ZFS, providing advanced web GUI management for Samba SMB shares. |
+| **[dperson/samba](https://github.com/dperson/samba)** | [![GitHub stars](https://img.shields.io/github/stars/dperson/samba?style=social&color=white)](https://github.com/dperson/samba/stargazers) | MIT | Popular, lightweight Docker container implementation for Samba with flexible CLI environment configuration. |
+| **[Samba](https://github.com/samba-team/samba)** | [![GitHub stars](https://img.shields.io/github/stars/samba-team/samba?style=social&color=white)](https://github.com/samba-team/samba/stargazers) | GPL-3.0 | The de facto standard open-source SMB/CIFS file server and Active Directory Domain Controller for Linux/Unix systems. |
+| **[WSDD Host Daemon](https://github.com/christgau/wsdd)** | [![GitHub stars](https://img.shields.io/github/stars/christgau/wsdd?style=social&color=white)](https://github.com/christgau/wsdd/stargazers) | MIT | Web Service Discovery daemon for Linux/FreeBSD. Allows Linux Samba SMB servers to automatically appear in Windows Network Explorer. |
+| **[ServerContainers Samba](https://github.com/ServerContainers/samba)** | [![GitHub stars](https://img.shields.io/github/stars/ServerContainers/samba?style=social&color=white)](https://github.com/ServerContainers/samba/stargazers) | MIT | Alpine Linux multi-arch Samba Docker image equipped with Zeroconf, `wsdd2`, and macOS Time Machine SMB extension support. |
+| **[go-smb2](https://github.com/hirochachacha/go-smb2)** | [![GitHub stars](https://img.shields.io/github/stars/hirochachacha/go-smb2?style=social&color=white)](https://github.com/hirochachacha/go-smb2/stargazers) | BSD-2-Clause | Feature-rich SMB2/3 client library written entirely in Go, supporting NTLM/SPNEGO authentication and file operations. |
+| **[KSMBD](https://github.com/cifsd-team/ksmbd)** | [![GitHub stars](https://img.shields.io/github/stars/cifsd-team/ksmbd?style=social&color=white)](https://github.com/cifsd-team/ksmbd/stargazers) | GPL-2.0 | High-performance Linux kernel-space SMB3 server implementation designed to bypass user-space context switching bottlenecks. |
+| **[DittoFS](https://github.com/marmos91/dittofs)** | [![GitHub stars](https://img.shields.io/github/stars/marmos91/dittofs?style=social&color=white)](https://github.com/marmos91/dittofs/stargazers) | MIT | Modular virtual filesystem and multi-tenant NFS/SMB server written in Go with S3 and database metadata backends. |
+| **[pysmbserver](https://github.com/CobblePot59/pysmbserver)** | [![GitHub stars](https://img.shields.io/github/stars/CobblePot59/pysmbserver?style=social&color=white)](https://github.com/CobblePot59/pysmbserver/stargazers) | Apache-2.0 | Simple, customizable SMB file server written in Python for fast local testing, development, and file transfer. |
+| **[go-smb2-alist](https://github.com/KirCute/go-smb2-alist)** | [![GitHub stars](https://img.shields.io/github/stars/KirCute/go-smb2-alist?style=social&color=white)](https://github.com/KirCute/go-smb2-alist/stargazers) | AGPL-3.0 | Customized Go SMB2 server implementation supporting macOS Time Machine compatibility and virtual driver mounts. |
+
+---
+
+## 🛠️ Protocol & Implementation Cheat Sheet
+
+- **Samba vs. KSMBD**: 
+  - **Samba** runs in user space, offering standard Active Directory DC integration and extensive VFS modules.
+  - **KSMBD** runs in Linux kernel space for multi-gigabit throughput and reduced context switching. *(Note: KSMBD and Samba cannot bind to port 445 simultaneously on the same host).*
+- **SMB Dialects & Security**:
+  - **SMB 1.0**: Deprecated & insecure (susceptible to EternalBlue). Disable everywhere.
+  - **SMB 3.1.1**: Current gold standard featuring AES-128-GCM / AES-256-GCM encryption, pre-authentication integrity verification, and multichannel performance scaling.
+
+---
+
+## 🤝 How to Contribute
+
+Contributions are welcome! Please follow these simple guidelines:
+
+1. **Fork the repository** on GitHub.
+2. **Add or edit entries** in `README.md` following the tabular layout.
+3. Ensure descriptions are **factual**, links point to official domain/repositories, and star counts/pricing details are accurate.
+4. **Submit a Pull Request** with a brief summary of your changes.
+
+---
+
+## ⚖️ Disclaimer
+
+- This list is **community-curated** for educational and architectural reference.
+- Commercial trademarks (AWS FSx, Azure Files, NetApp, Qumulo, etc.) belong to their respective owners.
+- Self-hosted SMB deployments handling sensitive data must enforce proper ACLs, network segmentations, and SMB 3.1.1 encryption.
+
+---
+
+## 💖 Support
+
+If you found this repository helpful, please consider supporting the project:
+
+- ⭐ **Star this repository** to increase its visibility.
+- 🔀 **Fork & Share** it with system administrators and network engineers.
+- ☕ **Buy me a coffee**: Sponsor development via the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Managed-Windows-File-Storage-SMB&type=date&legend=top-left)
