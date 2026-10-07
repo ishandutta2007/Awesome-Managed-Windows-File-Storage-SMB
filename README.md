@@ -61,7 +61,7 @@ The table below highlights commercial managed Windows file storage solutions, so
 
 ## 🐧 Open-Source GitHub Projects
 
-Below is a curated list of open-source SMB servers, NAS operating systems, FUSE proxies, and SMB protocol implementations sorted in **descending order by GitHub Stars_Count**.
+Below is a curated list of open-source SMB servers, NAS operating systems, FUSE proxies, and SMB protocol implementations sorted in **descending order by GitHub_Stars_Count**.
 
 | Project & Repo | Stars_Count | License | Description & Key Features |
 | :--- | :---: | :---: | :--- |
